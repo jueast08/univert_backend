@@ -31,7 +31,7 @@ public class UserControler {
     @Produces({MediaType.APPLICATION_JSON})
     public Response verifyUser(@PathParam("id") String id, @PathParam("mdp") String mdp) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("isConnected", UserService.verifyUser(id, mdp));
+		jsonObject.put("idUser", UserService.verifyUser(id, mdp));
 		String result = "@Produces(\"application/json\")" + jsonObject;
 		return Response.status(200).entity(result).build();
 	}
@@ -41,7 +41,7 @@ public class UserControler {
     @Produces({MediaType.APPLICATION_JSON})
     public Response verifyBadge(@PathParam("id") String id) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("isConnected", UserService.verifyBadge(id));
+		jsonObject.put("idUser", UserService.verifyBadge(id));
 		String result = "@Produces(\"application/json\")" + jsonObject;
 		return Response.status(200).entity(result).build();
 	}

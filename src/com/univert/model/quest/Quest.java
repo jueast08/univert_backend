@@ -5,30 +5,95 @@
  */
 package com.univert.model.quest;
 import java.util.ArrayList;
-import java.util.Date;
-
-import com.univert.model.garden.Slot;
+//import com.wavemaker.runtime.data.annotations.ColumnAlias;
 
 /**
  *
  * @author Aurélien
  */
 public class Quest {
-    int q_id;
-    String q_title;
-    String q_description;
-    Date q_start;
-    Date q_end;
-    int q_min_character;
-    int q_max_character;
-    int q_experience;
-    int q_create_by_id_character;
-    int q_loot_package;
-    int q_status;
-    Slot q_slot;   
 
+    String title;
+    String description;
+    int minCharacter;
+    int maxCharacter;
+    int nbCharacter;
+    int experience;
+    String type;
+  
+    public Quest(){
+    }
+    
+    public Quest(String title, String description, int minCharacter, int maxCharacter, int nbCharacter, int experience, String type){
+    	this.title = title;
+    	this.description = description;
+        this.minCharacter = minCharacter;
+        this.maxCharacter = maxCharacter;
+        this.nbCharacter = nbCharacter;
+        this.experience = experience;
+        this.type = type;
+    }
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getMinCharacter() {
+		return minCharacter;
+	}
+
+	public void setMinCharacter(int minCharacter) {
+		this.minCharacter = minCharacter;
+	}
+
+	public int getMaxCharacter() {
+		return maxCharacter;
+	}
+
+	public void setMaxCharacter(int maxCharacter) {
+		this.maxCharacter = maxCharacter;
+	}
+
+	public int getNbCharacter() {
+		return nbCharacter;
+	}
+
+	public void setNbCharacter(int nbCharacter) {
+		this.nbCharacter = nbCharacter;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+    
+    
+    
+    /*
     public Quest(int id,String title,String description,int min,int max,int xp,int loot,Slot slot){
-        q_id=id;
         q_title=title;
         q_description=description;
         q_min_character=min;
@@ -72,5 +137,5 @@ public class Quest {
         q_slot=slot;
         q_create_by_id_character=create;
         q_status=4;//  open
-    }
+    }*/
 }
