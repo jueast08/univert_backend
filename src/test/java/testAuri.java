@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package test.java;
-import com.univert.quest.*;
-import com.univert.character.*;
-import com.univert.garden.*;
+
+import com.univert.model.garden.Garden;
+import com.univert.model.garden.Plant;
+import com.univert.model.garden.Slot;
+import com.univert.model.quest.Quest;
+
 import java.util.ArrayList;
 
 /**
@@ -17,7 +20,7 @@ public class testAuri {
     
     
     public static void main(String [] args){
-    com.univert.character.Character myChar = new  com.univert.character.Character (1,"Motta");
+    com.univert.model.character.Character myChar = new  com.univert.model.character.Character (1,"Motta");
     Plant myPlant = new Plant(1,"Tomate","myPicture");
     Slot slot11 = new Slot(1,1,1,myPlant);
     Slot slot12 = new Slot(2,1,2,myPlant);

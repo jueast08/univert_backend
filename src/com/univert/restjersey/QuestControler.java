@@ -16,6 +16,7 @@ import com.univert.service.QuestService;
 
 @Path("/questservice")
 public class QuestControler {
+	
 	@GET
 	@Path("/getNumQuestFinish")
     @Produces({MediaType.APPLICATION_JSON})
@@ -25,5 +26,14 @@ public class QuestControler {
 		String result = "@Produces(\"application/json\")" + jsonObject;
 		return Response.status(200).entity(result).build();
 	}
-
+	
+	@GET
+	@Path("/garden/{id}/quests")
+    @Produces({MediaType.APPLICATION_JSON})
+	public Response getQuestsByGarden() throws JSONException, SQLException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("numberQuest", QuestService.getNumQuestFinish());
+		String result = "@Produces(\"application/json\")" + jsonObject;
+		return Response.status(200).entity(result).build();
+	}
 }
