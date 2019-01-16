@@ -34,18 +34,27 @@ public class DbCharacterDao {
 		ResultSet result;
 		result = DbManagement.getInstance().query(getCharacterInfo(idUser));
 		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return null;
+		}
 		return result.getInt(1);
 	}
     public Integer getBadge(int idUser) throws SQLException {
 		ResultSet result;
 		result = DbManagement.getInstance().query(getBadgeInfo(idUser));
 		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return null;
+		}
 		return result.getInt(1);
 	}
      public Integer getItem(int idUser) throws SQLException {
 		ResultSet result;
 		result = DbManagement.getInstance().query(getItemInfo(idUser));
 		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return null;
+		}
 		return result.getInt(1);
 	}
             
