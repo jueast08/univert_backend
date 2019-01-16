@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import com.univert.db.DbManagement;
 
 public class DbUserDao {
-	public static final String getUserQuery = "select * from u_user";
+    public static final String getUserQuery = "select * from u_user";
 	
     public static final String getUserQuery(String id, String mdp) {
     	return "select *  from u_user where u_username ='" + id + "'AND u_password ='"  + mdp +"'";
