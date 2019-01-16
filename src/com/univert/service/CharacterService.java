@@ -14,14 +14,26 @@ import java.sql.SQLException;
  */
 public class CharacterService {
     public static int getCharacterInfo(int idUser) throws SQLException {
-		return CharacterDao.getInstance().getDelegate().getCharacter(idUser);
+    	Integer id = CharacterDao.getInstance().getDelegate().getCharacter(idUser);
+    	if(id != null) {
+    		return id;
+    	}
+		return 0;
 	}
     
      public static int getBadgeInfo(int idCharacter) throws SQLException {
-		return CharacterDao.getInstance().getDelegate().getBadge(idCharacter);
+    	Integer id =  CharacterDao.getInstance().getDelegate().getBadge(idCharacter);
+		if(id != null) {
+    		return id;
+    	}
+		return 0;
 	}
      
       public static int getItemInfo(int idCharacter) throws SQLException {
-		return CharacterDao.getInstance().getDelegate().getItem(idCharacter);
+    	Integer id =  CharacterDao.getInstance().getDelegate().getItem(idCharacter);
+		if(id != null) {
+    		return id;
+    	}
+		return 0;
 	}
 }

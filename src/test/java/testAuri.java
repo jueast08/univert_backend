@@ -33,7 +33,7 @@ public class testAuri {
       add(slot22);
     }};
     Garden myGarden = new Garden(1,"myGarden",2,2,mySlotList);
-    Quest myQuest = new Quest(1,"myQuest","first Quest",1,1,2,slot11);
+   // Quest myQuest = new Quest(1,"myQuest","first Quest",1,1,2,slot11);
     
     //TO DO test
     }

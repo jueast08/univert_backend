@@ -15,8 +15,6 @@ import java.sql.SQLException;
  */
 public class DbCharacterDao {
       
-    
-   
             
     public static final String getCharacterInfo(int idUser) {
             return "select * from u_character INNER JOIN u_user_character ON c_id=uc_fk_character INNER JOIN u_user ON uc_fk_user =" + idUser;
@@ -34,18 +32,27 @@ public class DbCharacterDao {
 		ResultSet result;
 		result = DbManagement.getInstance().query(getCharacterInfo(idUser));
 		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return null;
+		}
 		return result.getInt(1);
 	}
     public Integer getBadge(int idUser) throws SQLException {
 		ResultSet result;
 		result = DbManagement.getInstance().query(getBadgeInfo(idUser));
 		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return null;
+		}
 		return result.getInt(1);
 	}
      public Integer getItem(int idUser) throws SQLException {
 		ResultSet result;
 		result = DbManagement.getInstance().query(getItemInfo(idUser));
 		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return null;
+		}
 		return result.getInt(1);
 	}
             
