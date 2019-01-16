@@ -1,6 +1,6 @@
-com\univert\db\DbManagement.class
-com\univert\db\MySQLManagement.class
 com\univert\restjersey\UserService.class
 com\univert\db\IDbManagement.class
 com\univert\init\ServletContextClass.class
+com\univert\db\DbManagement.class
+com\univert\db\MySQLManagement.class
 com\univert\db\ADbManagement.class
