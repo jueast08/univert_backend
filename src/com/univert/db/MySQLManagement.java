@@ -10,10 +10,9 @@ public class MySQLManagement extends ADbManagement {
 	
 	public void connection(String bdd_path) throws SQLException {
 		final String User = "root";
-		final String Password = "";
+		final String Password = "root";
 		try {
 			conn = DriverManager.getConnection(bdd_path, User, Password);
-			// ou getConnection(NomBase+”?user=”+User+”&password=”+pass);
 			if (conn == null) {
 				System.err.println("Could not connect !!");
 			}
@@ -21,7 +20,6 @@ public class MySQLManagement extends ADbManagement {
 		} catch (SQLException e)
 		{
 			System.err.println("Erreur de connexion " + e.getMessage ()) ;
-	
 	    }
 	}
 	

@@ -5,6 +5,10 @@ package com.univert.init;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.univert.dao.DbQuestDao;
+import com.univert.dao.DbUserDao;
+import com.univert.dao.QuestDao;
+import com.univert.dao.UserDao;
 import com.univert.db.DbManagement;
 import com.univert.db.MySQLManagement;
 
@@ -33,7 +37,8 @@ public class ServletContextClass implements ServletContextListener {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        QuestDao.getInstance().setDelegate(new DbQuestDao());
+        UserDao.getInstance().setDelegate(new DbUserDao());
     }
 
     @Override

@@ -22,12 +22,4 @@
 	<listener>
         <listener-class>com.univert.init.ServletContextClass</listener-class>
 	</listener>
-	<filter>
-		<filter-name>CorsFilter</filter-name>
-		<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>CorsFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 </web-app>
