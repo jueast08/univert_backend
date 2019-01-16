@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.json.JSONException;
@@ -17,7 +18,7 @@ import com.univert.service.QuestService;
 public class QuestControler {
 	@GET
 	@Path("/getNumQuestFinish")
-	@Produces("application/json")
+    @Produces({MediaType.APPLICATION_JSON})
 	public Response getNumQuestFinish() throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("numberQuest", QuestService.getNumQuestFinish());
