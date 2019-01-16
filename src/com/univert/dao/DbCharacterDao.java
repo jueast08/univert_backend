@@ -15,8 +15,6 @@ import java.sql.SQLException;
  */
 public class DbCharacterDao {
       
-    
-   
             
     public static final String getCharacterInfo(int idUser) {
             return "select * from u_character INNER JOIN u_user_character ON c_id=uc_fk_character INNER JOIN u_user ON uc_fk_user =" + idUser;
