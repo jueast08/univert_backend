@@ -24,6 +24,10 @@ public class Character {
     ArrayList<Quest> c_character_questFinish;
     ArrayList<Quest> c_character_questOnGoing;
     
+    
+    public Character(){
+        
+    }
     public Character(int id,String name){
         c_id=id;
         c_name=name;
@@ -41,15 +45,15 @@ public class Character {
     public void gainItem(Item newItem){
         c_character_item.add(newItem);
     }
-     public void gainBadge(Badge newBadge){
+    public void gainBadge(Badge newBadge){
         c_character_badge.add(newBadge);
     }
      
-     public void chooseQuest(Quest quest){
+    public void chooseQuest(Quest quest){
         c_character_questOnGoing.add(quest);
         
      }
-     public void validQuest(Quest quest){
+    public void validQuest(Quest quest){
          if(c_character_questOnGoing.remove(quest)){
              c_character_questFinish.add(quest);
          }
@@ -57,4 +61,16 @@ public class Character {
              System.err.println("Attentino la quete n'est pas en cours, elle ne peut etre validée");
         }
      }
+    public void setId(int id){
+         c_id=id;
+    }
+    public void setName(String name){
+         c_name=name;
+    }
+    public void setExperience(int xp){
+         c_experience=xp;
+    }
+    public void setLevel(int level){
+         c_level=level;
+    }
 }

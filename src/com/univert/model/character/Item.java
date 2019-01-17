@@ -19,4 +19,16 @@ public class Item {
         i_description=description;
         i_picture=picture;
     }
+    public Item(){
+        
+    }
+    public void setId(int id){
+          i_id=id;
+    }
+    public void setDescription(String desc){
+          i_description=desc;
+    }
+    public void setPicture(String pic){
+          i_picture=pic;
+    }
 }
