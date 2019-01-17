@@ -10,37 +10,37 @@ package com.univert.model.character;
  * @author Aurélien
  */
 public class Item {
-    int i_id;
-    String i_description;
-    String i_picture;
+    int id;
+    String description;
+    String picture;
     
     public Item(int id,String description,String picture){
-        i_id=id;
-        i_description=description;
-        i_picture=picture;
+        id=id;
+        description=description;
+        picture=picture;
     }
     public Item(){
         
     }
     public void setId(int id){
-          i_id=id;
+          id=id;
     }
     public void setDescription(String desc){
-          i_description=desc;
+          description=desc;
     }
     public void setPicture(String pic){
-          i_picture=pic;
+          picture=pic;
     }
 
     public int getId() {
-        return i_id;
+        return id;
     }
 
     public String getDescription() {
-        return i_description;
+        return description;
     }
 
     public String getPicture() {
-        return i_picture;
+        return picture;
     }
 }

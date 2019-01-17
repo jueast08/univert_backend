@@ -35,22 +35,24 @@ public class CharacterControler {
         Gson gson = new Gson();
         
         com.univert.model.character.Character myChar = CharacterService.getCharacter(idUser);
-        String json = gson.toJson(myChar.getName());
-        jsonObject.put("name", json);
-        json=gson.toJson(myChar.getLevel());
-        jsonObject.put("level", json);
-        json=gson.toJson(myChar.getExperience());
-        jsonObject.put("experience", json);
+        jsonObject.put("id", idUser);
+        jsonObject.put("name", myChar.getName());
+        jsonObject.put("level", myChar.getLevel());
+        jsonObject.put("experience", myChar.getExperience());
     		
         List<Badge> myBadge = CharacterService.getBadge(idUser);
-        json = gson.toJson(myBadge);
-        jsonObject.put("listeBadge", json);
+        String json = gson.toJson(myBadge);
+        jsonObject.put("listBadge", json);
        
         List<Item> myItem = CharacterService.getItem(idUser);
         json = gson.toJson(myItem);
         jsonObject.put("listItem", json);
         
-		return Response.status(200).entity(jsonObject.toString().replaceAll("\\\\", "")).header("Access-Control-Allow-Origin", "*")
+		return Response.status(200).entity(jsonObject.toString()
+				.replaceAll("\\\\", "")
+				.replaceAll("\"\\[", "\\[")
+				.replaceAll("\\]\"", "\\]"))
+				.header("Access-Control-Allow-Origin", "*")
 				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
 				.header("Access-Control-Allow-Credentials", "true")
 				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
