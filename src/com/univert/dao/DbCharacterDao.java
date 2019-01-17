@@ -20,7 +20,7 @@ public class DbCharacterDao {
       
     
     public static final String getCharacterSql(int idUser) {
-            return "select c_name from u_character INNER JOIN u_user_character ON c_id=uc_fk_character RIGHT JOIN u_user ON uc_fk_user = u_id where u_id="+idUser;
+            return "select * from u_character INNER JOIN u_user_character ON c_id=uc_fk_character RIGHT JOIN u_user ON uc_fk_user = u_id where u_id="+idUser;
     }
         
     public static final String getAllBadgeSql(int idUser) {
@@ -28,7 +28,7 @@ public class DbCharacterDao {
     }
 
      public static final String getAllItemSql(int idUser) {
-            return "select * from u_item INNER JOIN u_character_item ON i_id=ci_item LEFT JOIN u_character ci_fk_character=c_id INNER JOIN u_user_character ON uc_fk_character=c_id LEFT JOIN u_user ON uc_fk_user=u_id=" + idUser;
+            return "select * from u_item INNER JOIN u_character_item ON i_id=ci_fk_item LEFT JOIN u_character ON ci_fk_character=c_id INNER JOIN u_user_character ON uc_fk_character=c_id LEFT JOIN u_user ON uc_fk_user=u_id where u_id =" + idUser;
     } 
      public static final String getOneBadgeSql(int idBadge) {
             return "select * from u_badge WHERE b_id="  + idBadge;
@@ -40,7 +40,7 @@ public class DbCharacterDao {
      
      
     public com.univert.model.character.Character getCharacterById(int idUser) throws SQLException {
-                com.univert.model.character.Character charById = new com.univert.model.character.Character(); 
+        com.univert.model.character.Character charById = new com.univert.model.character.Character(); 
         
 		ResultSet result;
 		result = DbManagement.getInstance().query(getCharacterSql(idUser));
@@ -48,14 +48,13 @@ public class DbCharacterDao {
 		if(result.isBeforeFirst() || result.isAfterLast()) {
 			return null;
 		}
-                //changer les "1"
-                charById.setId(result.getInt(1));
-                charById.setName(result.getString(2));
-                charById.setExperience(result.getInt(3));
-                charById.setLevel(result.getInt(4));
-                
-                result.close();
-                return charById;
+        charById.setId(result.getInt(1));
+        charById.setName(result.getString(2));
+        charById.setExperience(result.getInt(3));
+        charById.setLevel(result.getInt(4));
+        
+        result.close();
+        return charById;
 	}
     public Badge getBadge(int idBadge) throws SQLException {
                 Badge badge = new Badge();
