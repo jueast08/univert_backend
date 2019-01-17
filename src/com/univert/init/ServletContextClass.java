@@ -13,6 +13,8 @@ import com.univert.dao.QuestDao;
 import com.univert.dao.StatusDao;
 import com.univert.dao.UserDao;
 import com.univert.dao.CharacterDao;
+import com.univert.dao.DbItemDao;
+import com.univert.dao.ItemDao;
 import com.univert.db.DbManagement;
 import com.univert.db.MySQLManagement;
 
@@ -44,6 +46,7 @@ public class ServletContextClass implements ServletContextListener {
         QuestDao.getInstance().setDelegate(new DbQuestDao());
         UserDao.getInstance().setDelegate(new DbUserDao());
         CharacterDao.getInstance().setDelegate(new DbCharacterDao());
+        ItemDao.getInstance().setDelegate(new DbItemDao());
         StatusDao.getInstance().setDelegate(new DbStatusDao());
     }
 

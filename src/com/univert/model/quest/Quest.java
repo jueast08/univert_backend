@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.univert.model.quest;
-import java.util.ArrayList;
 //import com.wavemaker.runtime.data.annotations.ColumnAlias;
 
 /**
