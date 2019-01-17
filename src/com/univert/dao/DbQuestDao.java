@@ -41,6 +41,10 @@ public class DbQuestDao {
     	return "select q_id from u_quest inner join u_status ON q_fk_status = u_status.s_id  inner join u_slot ON u_slot.s_id = q_fk_slot inner join u_garden ON g_id = s_fk_garden  WHERE s_description ='" + status + "' AND g_id =" + id;
     }
     
+    private static final String getAllQuestsByStatusUserQuery(String status, int id) {
+    	return "select q_id from u_quest inner join u_status ON q_fk_status = u_status.s_id  inner join u_character_quest ON cq_fk_quest = q_id inner join u_character ON u_character.c_id = cq_fk_character inner join u_user_character ON uc_fk_character = u_character.c_id inner join u_user ON u_user.u_id = u_user_character.uc_fk_user WHERE s_description ='" + status + "' AND u_id =" + id;
+    }
+    
     private static final String insertUserQuest(int idQuest, int idCharacter) {
     	return "insert into u_character_quest VALUES (null," + idCharacter + "," + idQuest + ")" ;
     }
@@ -68,7 +72,7 @@ public class DbQuestDao {
 		if(result.isBeforeFirst() || result.isAfterLast()) {
 			return null;
 		}
-		
+		quest.setId(result.getInt(1));
 		quest.setDescription(result.getString(3));
 		quest.setExperience(result.getInt(8));
 		quest.setMaxCharacter(result.getInt(7));
@@ -93,6 +97,18 @@ public class DbQuestDao {
 		List<Quest> listReturn = new LinkedList<Quest>();
 		ResultSet result;
 		result = DbManagement.getInstance().query(getAllQuestsByStatusQuery(status, idGarden));
+		result.next();
+		while(!result.isBeforeFirst() && !result.isAfterLast()) {
+			listReturn.add(getQuestById(result.getInt(1)));
+			result.next();
+		}
+		return listReturn;
+	}
+	
+	public List<Quest> getAllQuestsByStatusUser(String status, int idUser) throws SQLException {
+		List<Quest> listReturn = new LinkedList<Quest>();
+		ResultSet result;
+		result = DbManagement.getInstance().query(getAllQuestsByStatusUserQuery(status, idUser));
 		result.next();
 		while(!result.isBeforeFirst() && !result.isAfterLast()) {
 			listReturn.add(getQuestById(result.getInt(1)));

@@ -67,6 +67,36 @@ public class QuestControler {
 	}
 	
 	@GET
+	@Path("/user/{id}/quests")
+    @Produces({MediaType.APPLICATION_JSON})
+	public Response getQuestsByUser(@PathParam("id") int id) throws JSONException, SQLException {
+		JSONObject jsonObject = new JSONObject();
+		Gson gson = new Gson();
+		
+		List<Quest> questList= QuestService.getQuestsByUser(StatusService.getOnGoingStatus(), id);
+		String json = gson.toJson(questList);
+		jsonObject.put("ongoing", json);
+		
+		questList = QuestService.getQuestsByUser(StatusService.getOpenStatus(), id);
+		json = gson.toJson(questList);
+		jsonObject.put("todo", json);
+		
+		questList = QuestService.getQuestsByUser(StatusService.getClosedStatus(), id);
+		json = gson.toJson(questList);
+		jsonObject.put("done", json);
+		
+		return Response.status(200).entity(jsonObject.toString()
+				.replaceAll("\\\\", "")
+				.replaceAll("\"\\[", "\\[")
+				.replaceAll("\\]\"", "\\]"))
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
+	}
+	
+	@GET
 	@Path("/quests/{id}")
     @Produces({MediaType.APPLICATION_JSON})
 	public Response getQuestById(@PathParam("id") int id) throws JSONException, SQLException {

@@ -15,16 +15,15 @@ import java.sql.SQLException;
  */
 public class DbBadgeDao {
     public static final String addBadgeToChar(int idBadge,int idChar) {
-         return "INSERT INTO u_character_badge (cb_fk_character,cb_fk_badge) VALUES(" + idChar + "," + idBadge +")";
+         return "INSERT INTO u_character_badge  VALUES(null," + idChar + "," + idBadge +")";
     }
+    
      public Boolean insertBadgeForCharacter(int idBadge,int idChar) throws SQLException {
-        ResultSet result;
-	result = DbManagement.getInstance().query(addBadgeToChar(idBadge,idChar));
-	result.next();
-	if(result.isBeforeFirst() || result.isAfterLast()) {
-		return false;
-	}
-           result.close();
-           return true;
+		int result = DbManagement.getInstance().insert(addBadgeToChar(idBadge,idChar));
+		if(result == 0) {
+			return false;
+		} else {
+			return true;
+		}
      }
 }

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 public class ItemService {
 	public static Boolean earnItem(int idQuete, int idChar) throws SQLException {
             Item test = ItemDao.getInstance().getDelegate().getItemByIdQuest(idQuete);
-
             if(test !=null) {
             	return ItemDao.getInstance().getDelegate().insertItemForCharacter(test.getId(),idChar);
             } else {

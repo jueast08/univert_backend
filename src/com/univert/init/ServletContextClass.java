@@ -12,7 +12,9 @@ import com.univert.dao.DbCharacterDao;
 import com.univert.dao.QuestDao;
 import com.univert.dao.StatusDao;
 import com.univert.dao.UserDao;
+import com.univert.dao.BadgeDao;
 import com.univert.dao.CharacterDao;
+import com.univert.dao.DbBadgeDao;
 import com.univert.dao.DbItemDao;
 import com.univert.dao.ItemDao;
 import com.univert.db.DbManagement;
@@ -48,6 +50,7 @@ public class ServletContextClass implements ServletContextListener {
         CharacterDao.getInstance().setDelegate(new DbCharacterDao());
         ItemDao.getInstance().setDelegate(new DbItemDao());
         StatusDao.getInstance().setDelegate(new DbStatusDao());
+        BadgeDao.getInstance().setDelegate(new DbBadgeDao());
     }
 
     @Override

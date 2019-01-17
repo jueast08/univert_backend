@@ -46,7 +46,7 @@ public class QuestService {
 			if(xpBefore >= 1000) {
 				xpAfter = xpBefore - 1000;
 				levelAfter = caraXp.getLevel() + 1;
-				//Add badge
+				BadgeService.earnBadge(1, oneChara);
 			} else {
 				xpAfter = xpBefore;
 				levelAfter = caraXp.getLevel();
@@ -54,6 +54,10 @@ public class QuestService {
 			CharacterDao.getInstance().getDelegate().setExp(xpAfter, oneChara, levelAfter);
 		}
 		return returnBool;
+	}
+
+	public static List<Quest> getQuestsByUser(String status,int idUser) throws SQLException {
+		return QuestDao.getInstance().getDelegate().getAllQuestsByStatusUser(status, idUser);
 	}
 	
 	

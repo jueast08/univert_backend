@@ -12,6 +12,7 @@ package com.univert.model.quest;
  */
 public class Quest {
 
+	int id;
     String title;
     String description;
     int minCharacter;
@@ -23,7 +24,8 @@ public class Quest {
     public Quest(){
     }
     
-    public Quest(String title, String description, int minCharacter, int maxCharacter, int nbCharacter, int experience, String type){
+    public Quest(int id, String title, String description, int minCharacter, int maxCharacter, int nbCharacter, int experience, String type){
+    	this.id = id;
     	this.title = title;
     	this.description = description;
         this.minCharacter = minCharacter;
@@ -32,6 +34,16 @@ public class Quest {
         this.experience = experience;
         this.type = type;
     }
+    
+    
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getTitle() {
 		return title;

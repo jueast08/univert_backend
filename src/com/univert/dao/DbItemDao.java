@@ -16,7 +16,8 @@ import java.sql.SQLException;
  */
 public class DbItemDao {
     public static final String addItemToChar(int idItem,int idChar) {
-         return "INSERT INTO u_character_item (ci_fk_character,ci_fk_item) VALUES(" + idChar + "," + idItem +")";
+    	//System.out.println(idItem);
+         return "INSERT INTO u_character_item VALUES(null, " + idChar + "," + idItem +")";
     }
     public static final String findItemByIdQuest(int idQuest) {
          return "SELECT * FROM u_item Left JOIN u_item_loot ON i_id=u_fk_item Left JOIN u_loot_package ON u_fk_loot_package=lp_id Left JOIN u_quest ON lp_id=q_id WHERE q_id=" + idQuest;
@@ -40,15 +41,13 @@ public class DbItemDao {
         return item;
 	}
     
-     public Boolean insertItemForCharacter(int idItem,int idChar) throws SQLException {
-        ResultSet result;
-	result = DbManagement.getInstance().query(addItemToChar(idItem,idChar));
-	result.next();
-	if(result.isBeforeFirst() || result.isAfterLast()) {
-		return false;
-	}
-           result.close();
-           return true;
+    public Boolean insertItemForCharacter(int idItem,int idChar) throws SQLException {
+		int result = DbManagement.getInstance().insert(addItemToChar(idItem,idChar));
+		if(result == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

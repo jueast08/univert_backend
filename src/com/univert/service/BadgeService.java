@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author Aurélien
  */
 public class BadgeService {
-    public static Boolean earnBadge(int idQuete, int idChar) throws SQLException {
-        return BadgeDao.getInstance().getDelegate().insertBadgeForCharacter(idQuete,idChar);
+    public static Boolean earnBadge(int idBadge, int idChar) throws SQLException {
+        return BadgeDao.getInstance().getDelegate().insertBadgeForCharacter(idBadge, idChar);
     }
 }

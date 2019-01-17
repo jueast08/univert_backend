@@ -15,15 +15,15 @@ public class Item {
     String picture;
     
     public Item(int id,String description,String picture){
-        id=id;
-        description=description;
-        picture=picture;
+        this.id=id;
+        this.description=description;
+        this.picture=picture;
     }
     public Item(){
         
     }
     public void setId(int id){
-          id=id;
+          this.id=id;
     }
     public void setDescription(String desc){
           description=desc;
