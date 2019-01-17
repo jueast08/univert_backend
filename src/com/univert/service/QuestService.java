@@ -45,6 +45,9 @@ public class QuestService {
 			ItemService.earnItem(idQuest, oneChara);
 			int xpBefore = caraXp.getXp() + expQuest;
 			if(xpBefore >= 1000) {
+				if(idBadge > 5) {
+					idBadge = 2;
+				}
 				xpAfter = xpBefore - 1000;
 				levelAfter = caraXp.getLevel() + 1;
 				BadgeService.earnBadge(idBadge, oneChara);
