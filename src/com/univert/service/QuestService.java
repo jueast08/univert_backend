@@ -41,6 +41,7 @@ public class QuestService {
 			int xpAfter;
 			int levelAfter;
 			CharacterXp caraXp = CharacterDao.getInstance().getDelegate().getCharaExp(oneChara);
+			ItemService.earnItem(idQuest, oneChara);
 			int xpBefore = caraXp.getXp() + expQuest;
 			if(xpBefore >= 1000) {
 				xpAfter = xpBefore - 1000;

@@ -80,15 +80,5 @@ public class QuestControler {
 		jsonObject.put("validate", QuestService.setQuestDone(idQuest));
 		return Response.status(200).entity(jsonObject.toString()).build();
 	}
-        
-        @POST
-	@Path("/quests/{idQuest}/user/{idUser}")
-    @Produces({MediaType.APPLICATION_JSON})
-	public Response setItemForCharacter(@PathParam("idQuest") int idQuest, @PathParam("idUser") int idUser) throws JSONException, SQLException {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("Item added", ItemService.earnItem(idQuest, idUser));
-		String result = "@Produces(\"application/json\")" + jsonObject;
-		return Response.status(200).entity(result).build();
-	}
 	
 }
