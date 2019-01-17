@@ -7,33 +7,24 @@ package com.univert.service;
 
 import com.univert.dao.CharacterDao;
 import java.sql.SQLException;
+import com.univert.model.character.*;
+import java.util.List;
 
 /**
  *
  * @author Aurélien
  */
 public class CharacterService {
-    public static int getCharacterInfo(int idUser) throws SQLException {
-    	Integer id = CharacterDao.getInstance().getDelegate().getCharacter(idUser);
-    	if(id != null) {
-    		return id;
-    	}
-		return 0;
-	}
+
+    public static com.univert.model.character.Character getCharacter(int idUser) throws SQLException {
+    	return CharacterDao.getInstance().getDelegate().getCharacterById(idUser);
+    }
     
-     public static int getBadgeInfo(int idCharacter) throws SQLException {
-    	Integer id =  CharacterDao.getInstance().getDelegate().getBadge(idCharacter);
-		if(id != null) {
-    		return id;
-    	}
-		return 0;
-	}
+    public static List<Badge> getBadge(int idUser) throws SQLException {
+    	return CharacterDao.getInstance().getDelegate().getAllBadgeByUser(idUser);
+    }
      
-      public static int getItemInfo(int idCharacter) throws SQLException {
-    	Integer id =  CharacterDao.getInstance().getDelegate().getItem(idCharacter);
-		if(id != null) {
-    		return id;
-    	}
-		return 0;
-	}
+    public static List<Item> getItem(int idUser) throws SQLException {
+    	return CharacterDao.getInstance().getDelegate().getAllItemByUser(idUser);
+    }
 }

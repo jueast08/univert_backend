@@ -19,4 +19,17 @@ public class Badge {
         b_description=description;
         b_picture=picture;
     }
+      public Badge(){
+          
+      }
+      
+      public void setId(int id){
+          b_id=id;
+      }
+      public void setDescription(String desc){
+          b_description=desc;
+      }
+      public void setPicture(String pic){
+          b_picture=pic;
+      }
 }
