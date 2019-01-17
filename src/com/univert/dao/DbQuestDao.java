@@ -22,12 +22,20 @@ public class DbQuestDao {
     	return "select * from u_quest left join u_type ON q_fk_type = t_id WHERE q_id =" + id;
     }
     
+    private static final String getCharacterByUserId(int id) {
+    	return "select * FROM u_user_character where uc_fk_user = " +id;
+    }
+    
     private static final String getNumCharacterOnQuestQuery(int id) {
     	return "select COUNT(*) from u_character_quest inner join u_quest ON cq_fk_quest = q_id  WHERE q_id =" + id;
     }
     
     private static final String getAllQuestsByStatusQuery(String status, int id) {
     	return "select q_id from u_quest inner join u_status ON q_fk_status = u_status.s_id  inner join u_slot ON u_slot.s_id = q_fk_slot inner join u_garden ON g_id = s_fk_garden  WHERE s_description ='" + status + "' AND g_id =" + id;
+    }
+    
+    private static final String insertUserQuest(int idQuest, int idCharacter) {
+    	return "insert into u_character_quest VALUES (null," + idCharacter + "," + idQuest + ")" ;
     }
     
 	public Integer getNumQuestFinish() throws SQLException {
@@ -80,5 +88,20 @@ public class DbQuestDao {
 			result.next();
 		}
 		return listReturn;
+	}
+	
+	public boolean setQuestByUser(int idQuest, int idUser) throws SQLException {
+		ResultSet result;
+		result = DbManagement.getInstance().query(getCharacterByUserId(idUser));
+		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return false;
+		}
+		int idCharacter = result.getInt(3);
+		int resultInt = DbManagement.getInstance().insert(insertUserQuest(idQuest, idCharacter));
+		if(resultInt == 0) {
+			return false;
+		}
+		return true;	
 	}
 }

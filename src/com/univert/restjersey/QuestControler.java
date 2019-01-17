@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -64,4 +65,15 @@ public class QuestControler {
 		String result = "@Produces(\"application/json\")" + json;
 		return Response.status(200).entity(result).build();
 	}
+	
+	@POST
+	@Path("/quests/{idQuest}/user/{idUser}")
+    @Produces({MediaType.APPLICATION_JSON})
+	public Response setQuestByUser(@PathParam("idQuest") int idQuest, @PathParam("idUser") int idUser) throws JSONException, SQLException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("validate", QuestService.setQuestByUser(idQuest, idUser));
+		String result = "@Produces(\"application/json\")" + jsonObject;
+		return Response.status(200).entity(result).build();
+	}
+	
 }

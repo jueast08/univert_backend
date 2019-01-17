@@ -20,4 +20,15 @@ public class QuestService {
 	public static List<Quest> getQuestsByGarden(String status,int idGarden) throws SQLException {
 		return QuestDao.getInstance().getDelegate().getAllQuestsByStatus(status, idGarden);
 	}
+	
+	
+	public static boolean setQuestByUser(int idQuest, int idUser) throws SQLException {
+	//	boolean statusToUpdate = calcStatusUpdate();
+		boolean returnBool = QuestDao.getInstance().getDelegate().setQuestByUser(idQuest, idUser);
+/*		if(returnBool && statusToUpdate) {
+			QuestDao.getInstance().getDelegate().updateStatus(StatusService.getOnGoingStatus())
+		}*/
+		
+		return returnBool;
+	}
 }
