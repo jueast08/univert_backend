@@ -22,8 +22,7 @@ public class UserControler {
 	public Response getNumberUser() throws JSONException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("numberUser", 0);
-		String result = "@Produces(\"application/json\")" + jsonObject;
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(jsonObject.toString()).build();
 	}
 
 	@GET
@@ -32,8 +31,7 @@ public class UserControler {
     public Response verifyUser(@PathParam("id") String id, @PathParam("mdp") String mdp) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("idUser", UserService.verifyUser(id, mdp));
-		String result = "@Produces(\"application/json\")" + jsonObject;
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(jsonObject.toString()).build();
 	}
 	
 	@GET
@@ -42,7 +40,12 @@ public class UserControler {
     public Response verifyBadge(@PathParam("id") String id) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("idUser", UserService.verifyBadge(id));
-		String result = "@Produces(\"application/json\")" + jsonObject;
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(jsonObject.toString())
+	/*	.header("Access-Control-Allow-Origin", "*")
+		.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+		.header("Access-Control-Allow-Credentials", "true")
+		.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+		.header("Access-Control-Max-Age", "1209600")*/
+		.build();
 	}
 }

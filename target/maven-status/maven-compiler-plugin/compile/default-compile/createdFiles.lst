@@ -4,6 +4,8 @@ test\TestDB.class
 com\univert\init\ServletContextClass.class
 com\univert\restjersey\QuestControler.class
 com\univert\model\quest\Quest.class
+com\univert\service\ItemService.class
+com\univert\dao\DbStatusDao.class
 com\univert\dao\UserDao.class
 com\univert\model\user\User.class
 com\univert\model\garden\Garden.class
@@ -17,11 +19,13 @@ com\univert\service\UserService.class
 com\univert\dao\DbCharacterDao.class
 test\java\testAuri.class
 com\univert\model\character\Badge.class
+com\univert\restjersey\CORSFilter.class
 com\univert\dao\DbUserDao.class
 com\univert\model\character\Character.class
 com\univert\dao\DbQuestDao.class
 com\univert\dao\CharacterDao.class
 com\univert\restjersey\UserControler.class
+com\univert\dao\StatusDao.class
 com\univert\db\DbManagement.class
 com\univert\db\MySQLManagement.class
 com\univert\service\CharacterService.class

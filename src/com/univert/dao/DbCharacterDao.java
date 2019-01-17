@@ -38,6 +38,14 @@ public class DbCharacterDao {
            return "select * from u_item WHERE i_id="  + idItem;
      } 
      
+     public static final String getCharaExpSql(int chara) {
+         return "select c_experience, c_level from u_character WHERE c_id="  + chara;
+ }
+     
+     public static final String setExpSql(int exp, int idUser, int level) {
+         return "UPDATE `u_character` SET `c_experience`= " + exp + ", `c_level`=" + level +" WHERE `c_id`=" + idUser;
+     }
+     
      
     public com.univert.model.character.Character getCharacterById(int idUser) throws SQLException {
         com.univert.model.character.Character charById = new com.univert.model.character.Character(); 
@@ -82,11 +90,11 @@ public class DbCharacterDao {
 		if(result.isBeforeFirst() || result.isAfterLast()) {
 			return null;
 		}
-                // changer les "1"
-                item.setId(result.getInt(1));
-                item.setDescription(result.getString(2));
-                item.setPicture(result.getString(3));
-                result.close();
+        // changer les "1"
+        item.setId(result.getInt(1));
+        item.setDescription(result.getString(2));
+        item.setPicture(result.getString(3));
+        result.close();
                 
 		return item;
      }
@@ -114,4 +122,30 @@ public class DbCharacterDao {
 		}
 		return listReturn;
 	}
+     
+     public boolean setExp(int exp, int idUser, int level) throws SQLException {
+ 		int result;
+ 		result = DbManagement.getInstance().insert(setExpSql(exp, idUser, level));
+ 		if(result == 0) {
+ 			return false;
+ 		}
+ 		return true;
+     }
+     
+     public CharacterXp getCharaExp(int idChara) throws SQLException {
+    	CharacterXp characterXp = new CharacterXp();
+         
+ 		ResultSet result;
+ 		result = DbManagement.getInstance().query(getCharaExpSql(idChara));
+ 		result.next();
+ 		if(result.isBeforeFirst() || result.isAfterLast()) {
+ 			return null;
+ 		}
+
+ 		characterXp.setXp(result.getInt(1));
+ 		characterXp.setLevel(result.getInt(2));
+        result.close();
+                 
+        return characterXp;
+      }
 }
