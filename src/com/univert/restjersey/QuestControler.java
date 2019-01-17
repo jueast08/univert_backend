@@ -71,4 +71,13 @@ public class QuestControler {
 		return Response.status(200).entity(jsonObject.toString()).build();
 	}
 	
+	@POST
+	@Path("/quests/{idQuest}/done")
+    @Produces({MediaType.APPLICATION_JSON})
+	public Response setQuestDone(@PathParam("idQuest") int idQuest) throws JSONException, SQLException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("validate", QuestService.setQuestDone(idQuest));
+		return Response.status(200).entity(jsonObject.toString()).build();
+	}
+	
 }

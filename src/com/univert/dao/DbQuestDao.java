@@ -17,9 +17,16 @@ public class DbQuestDao {
     
     private static final String AllQuestFilteredQuery = "select * from u_quest INNER JOIN u_status ON u_status.s_id = q_fk_status WHERE u_status =" + StatusService.getOnGoingStatus();
 	
+    private static final String setStatusQuestQuery(int idQuest, int idStatus) {
+    	return "UPDATE `u_quest` SET `q_fk_status`= " + idStatus + " WHERE q_id =" + idQuest;
+    }
     
     private static final String getOneQuestQuery(int id) {
     	return "select * from u_quest left join u_type ON q_fk_type = t_id WHERE q_id =" + id;
+    }
+    
+    private static final String getExperienByQuestQuery(int id) {
+    	return "select q_experience FROM u_quest where q_id = " +id;
     }
     
     private static final String getCharacterByUserId(int id) {
@@ -36,6 +43,10 @@ public class DbQuestDao {
     
     private static final String insertUserQuest(int idQuest, int idCharacter) {
     	return "insert into u_character_quest VALUES (null," + idCharacter + "," + idQuest + ")" ;
+    }
+    
+    private static final String getCharacterIdByQuestQuery(int idQuest) {
+    	return "select cq_fk_character FROM u_character_quest WHERE cq_fk_quest =" + idQuest;
     }
     
 	public Integer getNumQuestFinish() throws SQLException {
@@ -104,4 +115,51 @@ public class DbQuestDao {
 		}
 		return true;	
 	}
+
+	public boolean setQuestDone(int idQuest) throws SQLException {
+		ResultSet result;
+		Integer idStatus = StatusDao.getInstance().getDelegate().getStatusIdByDescription(StatusService.getClosedStatus());
+		if(idStatus == null) {
+			return false;
+		}
+		int resultInt = DbManagement.getInstance().insert(setStatusQuestQuery(idQuest, idStatus.intValue()));
+		if(resultInt == 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean setQuestInProgress(int idQuest) throws SQLException {
+		Integer idStatus = StatusDao.getInstance().getDelegate().getStatusIdByDescription(StatusService.getOnGoingStatus());
+		if(idStatus == null) {
+			return false;
+		}
+		int resultInt = DbManagement.getInstance().insert(setStatusQuestQuery(idQuest, idStatus.intValue()));
+		if(resultInt == 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	public int getExperienByQuest(int id) throws SQLException {
+		ResultSet result;
+		result = DbManagement.getInstance().query(getExperienByQuestQuery(id));
+		result.next();
+		if(result.isBeforeFirst() || result.isAfterLast()) {
+			return 0;
+		}
+		return result.getInt(1);
+    }
+	
+	public List<Integer> getCharacterIdByQuest(int idQuest) throws SQLException {
+		List<Integer> listReturn = new LinkedList<Integer>();
+		ResultSet result;
+		result = DbManagement.getInstance().query(getCharacterIdByQuestQuery(idQuest));
+		result.next();
+		while(!result.isBeforeFirst() && !result.isAfterLast()) {
+			listReturn.add(result.getInt(1));
+			result.next();
+		}
+		return listReturn;
+    }
 }
