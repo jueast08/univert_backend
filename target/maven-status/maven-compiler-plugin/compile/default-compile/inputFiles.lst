@@ -1,6 +1,8 @@
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\garden\Slot.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\restjersey\UserControler.java
+C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\DbItemDao.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\DbStatusDao.java
+C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\DbBadgeDao.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\db\DbManagement.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\character\Item.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\character\Character.java
@@ -17,8 +19,11 @@ C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\service\Qu
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\quest\Quest.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\test\java\testAuri.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\user\User.java
+C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\ItemDao.java
+C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\service\BadgeService.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\DbQuestDao.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\DbCharacterDao.java
+C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\character\CharacterXp.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\garden\Garden.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\test\TestDB.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\service\StatusService.java
@@ -28,5 +33,6 @@ C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\service\It
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\StatusDao.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\restjersey\CORSFilter.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\service\UserService.java
+C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\BadgeDao.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\dao\DbUserDao.java
 C:\Users\cohina\eclipse-workspace\git\univert_backend\src\com\univert\model\garden\Plant.java

@@ -109,7 +109,7 @@ public class QuestControler {
 				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
-	@POST
+	@GET
 	@Path("/quests/{idQuest}/user/{idUser}")
     @Produces({MediaType.APPLICATION_JSON})
 	public Response setQuestByUser(@PathParam("idQuest") int idQuest, @PathParam("idUser") int idUser) throws JSONException, SQLException {
@@ -122,7 +122,7 @@ public class QuestControler {
 				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
-	@POST
+	@GET
 	@Path("/quests/{idQuest}/done")
     @Produces({MediaType.APPLICATION_JSON})
 	public Response setQuestDone(@PathParam("idQuest") int idQuest) throws JSONException, SQLException {

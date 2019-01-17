@@ -11,6 +11,7 @@ import com.univert.model.quest.Quest;
 
 
 public class QuestService {
+	static int idBadge = 2;
 	
 	public static int getNumQuestFinish() throws SQLException {
 		return QuestDao.getInstance().getDelegate().getNumQuestFinish();
@@ -46,7 +47,8 @@ public class QuestService {
 			if(xpBefore >= 1000) {
 				xpAfter = xpBefore - 1000;
 				levelAfter = caraXp.getLevel() + 1;
-				BadgeService.earnBadge(1, oneChara);
+				BadgeService.earnBadge(idBadge, oneChara);
+				idBadge++;
 			} else {
 				xpAfter = xpBefore;
 				levelAfter = caraXp.getLevel();
