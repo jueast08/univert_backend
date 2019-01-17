@@ -28,8 +28,7 @@ public class QuestControler {
 	public Response getNumQuestFinish() throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("numberQuest", QuestService.getNumQuestFinish());
-		String result = "@Produces(\"application/json\")" + jsonObject;
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(jsonObject.toString()).build();
 	}
 	
 	@GET
@@ -51,9 +50,7 @@ public class QuestControler {
 		json = gson.toJson(questList);
 		jsonObject.put("done", json);
 		
-		String result = "@Produces(\"application/json\")" + jsonObject.toString().replaceAll("\\\\", "");
-		
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(jsonObject.toString().replaceAll("\\\\", "")).build();
 	}
 	
 	@GET
@@ -62,8 +59,7 @@ public class QuestControler {
 	public Response getQuestById(@PathParam("id") int id) throws JSONException, SQLException {
 		Gson gson = new Gson();
 		String json = gson.toJson(QuestService.getQuestById(id));
-		String result = "@Produces(\"application/json\")" + json;
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(json.toString()).build();
 	}
 	
 	@POST
@@ -72,8 +68,7 @@ public class QuestControler {
 	public Response setQuestByUser(@PathParam("idQuest") int idQuest, @PathParam("idUser") int idUser) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("validate", QuestService.setQuestByUser(idQuest, idUser));
-		String result = "@Produces(\"application/json\")" + jsonObject;
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(jsonObject.toString()).build();
 	}
 	
 }

@@ -4,6 +4,7 @@ test\TestDB.class
 com\univert\init\ServletContextClass.class
 com\univert\restjersey\QuestControler.class
 com\univert\model\quest\Quest.class
+com\univert\service\ItemService.class
 com\univert\dao\UserDao.class
 com\univert\model\user\User.class
 com\univert\model\garden\Garden.class

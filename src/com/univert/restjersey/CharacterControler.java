@@ -51,8 +51,7 @@ public class CharacterControler {
         json = gson.toJson(myItem);
         jsonObject.put("listItem", json);
         
-        String result = "@Produces(\"application/json\")" + jsonObject.toString().replaceAll("\\\\", "");
-		return Response.status(200).entity(result).build();
+		return Response.status(200).entity(jsonObject.toString().replaceAll("\\\\", "")).build();
     }
 	
 }
