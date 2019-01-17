@@ -14,22 +14,36 @@ public class Badge {
     String b_description;
     String b_picture;
     
-      public Badge(int id,String description,String picture){
+    public Badge(int id,String description,String picture){
         b_id=id;
         b_description=description;
         b_picture=picture;
     }
-      public Badge(){
-          
-      }
       
-      public void setId(int id){
+    public Badge(){
+          
+    }
+
+    public int getId() {
+        return b_id;
+    }
+
+    public String getDescription() {
+        return b_description;
+    }
+
+    public String getPicture() {
+        return b_picture;
+    }
+     
+      
+    public void setId(int id){
           b_id=id;
       }
-      public void setDescription(String desc){
+    public void setDescription(String desc){
           b_description=desc;
       }
-      public void setPicture(String pic){
-          b_picture=pic;
+    public void setPicture(String pic){
+           b_picture=pic;
       }
 }
