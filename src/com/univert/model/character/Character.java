@@ -73,4 +73,16 @@ public class Character {
     public void setLevel(int level){
          c_level=level;
     }
+    public int getId(){
+         return c_id;
+    }
+    public String getName(){
+         return c_name;
+    }
+    public int getExperience(){
+         return c_experience;
+    }
+    public int getLevel(){
+         return c_level;
+    }
 }

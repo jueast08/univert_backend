@@ -8,6 +8,7 @@ package com.univert.service;
 import com.univert.dao.CharacterDao;
 import java.sql.SQLException;
 import com.univert.model.character.*;
+import java.util.List;
 
 /**
  *
@@ -19,11 +20,11 @@ public class CharacterService {
     	return CharacterDao.getInstance().getDelegate().getCharacterById(idUser);
     }
     
-    public static Badge getBadge(int idUser) throws SQLException {
-    	return CharacterDao.getInstance().getDelegate().getBadge(idUser);
+    public static List<Badge> getBadge(int idUser) throws SQLException {
+    	return CharacterDao.getInstance().getDelegate().getAllBadgeByUser(idUser);
     }
      
-    public static Item getItem(int idUser) throws SQLException {
-    	return CharacterDao.getInstance().getDelegate().getItem(idUser);
+    public static List<Item> getItem(int idUser) throws SQLException {
+    	return CharacterDao.getInstance().getDelegate().getAllItemByUser(idUser);
     }
 }
