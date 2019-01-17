@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Aurélien
+ * @author Aurï¿½lien
  */
 public class DbItemDao {
     public static final String addItemToChar(int idItem,int idChar) {
@@ -20,9 +20,6 @@ public class DbItemDao {
     }
     public static final String findItemByIdQuest(int idQuest) {
          return "SELECT * FROM u_item Left JOIN u_item_loot ON i_id=u_fk_item Left JOIN u_loot_package ON u_fk_loot_package=lp_id Left JOIN u_quest ON lp_id=q_id WHERE q_id=" + idQuest;
-    }
-    public static final String findCharFromUser(int idUser){
-        return "select * from u_character INNER JOIN u_user_character ON c_id=uc_fk_character RIGHT JOIN u_user ON uc_fk_user = u_id where u_id="+idUser;
     }
 
     
