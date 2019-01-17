@@ -50,7 +50,11 @@ public class CharacterControler {
         json = gson.toJson(myItem);
         jsonObject.put("listItem", json);
         
-		return Response.status(200).entity(jsonObject.toString().replaceAll("\\\\", "")).build();
+		return Response.status(200).entity(jsonObject.toString().replaceAll("\\\\", "")).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
     }
 	
 }

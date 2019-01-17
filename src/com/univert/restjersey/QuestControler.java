@@ -29,7 +29,11 @@ public class QuestControler {
 	public Response getNumQuestFinish() throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("numberQuest", QuestService.getNumQuestFinish());
-		return Response.status(200).entity(jsonObject.toString()).build();
+		return Response.status(200).entity(jsonObject.toString()).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
 	@GET
@@ -51,7 +55,11 @@ public class QuestControler {
 		json = gson.toJson(questList);
 		jsonObject.put("done", json);
 		
-		return Response.status(200).entity(jsonObject.toString().replaceAll("\\\\", "")).build();
+		return Response.status(200).entity(jsonObject.toString().replaceAll("\\\\", "")).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
 	@GET
@@ -60,7 +68,11 @@ public class QuestControler {
 	public Response getQuestById(@PathParam("id") int id) throws JSONException, SQLException {
 		Gson gson = new Gson();
 		String json = gson.toJson(QuestService.getQuestById(id));
-		return Response.status(200).entity(json.toString()).build();
+		return Response.status(200).entity(json.toString()).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
 	@POST
@@ -69,7 +81,11 @@ public class QuestControler {
 	public Response setQuestByUser(@PathParam("idQuest") int idQuest, @PathParam("idUser") int idUser) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("validate", QuestService.setQuestByUser(idQuest, idUser));
-		return Response.status(200).entity(jsonObject.toString()).build();
+		return Response.status(200).entity(jsonObject.toString()).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
 	@POST
@@ -78,7 +94,11 @@ public class QuestControler {
 	public Response setQuestDone(@PathParam("idQuest") int idQuest) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("validate", QuestService.setQuestDone(idQuest));
-		return Response.status(200).entity(jsonObject.toString()).build();
+		return Response.status(200).entity(jsonObject.toString()).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
 }
