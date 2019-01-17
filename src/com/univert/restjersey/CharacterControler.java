@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.univert.service.CharacterService;
 import com.univert.model.character.*;
-import com.univert.service.UserService;
 import java.sql.SQLException;
 import java.util.List;
 import javax.ws.rs.PathParam;

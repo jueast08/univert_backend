@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.univert.model.quest.Quest;
+import com.univert.service.ItemService;
 import com.univert.service.QuestService;
 import com.univert.service.StatusService;
 
@@ -72,6 +73,16 @@ public class QuestControler {
 	public Response setQuestByUser(@PathParam("idQuest") int idQuest, @PathParam("idUser") int idUser) throws JSONException, SQLException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("validate", QuestService.setQuestByUser(idQuest, idUser));
+		String result = "@Produces(\"application/json\")" + jsonObject;
+		return Response.status(200).entity(result).build();
+	}
+        
+        @POST
+	@Path("/quests/{idQuest}/user/{idUser}")
+    @Produces({MediaType.APPLICATION_JSON})
+	public Response setItemForCharacter(@PathParam("idQuest") int idQuest, @PathParam("idUser") int idUser) throws JSONException, SQLException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("Item added", ItemService.earnItem(idQuest, idUser));
 		String result = "@Produces(\"application/json\")" + jsonObject;
 		return Response.status(200).entity(result).build();
 	}

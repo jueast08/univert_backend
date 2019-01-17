@@ -31,4 +31,16 @@ public class Item {
     public void setPicture(String pic){
           i_picture=pic;
     }
+
+    public int getId() {
+        return i_id;
+    }
+
+    public String getDescription() {
+        return i_description;
+    }
+
+    public String getPicture() {
+        return i_picture;
+    }
 }

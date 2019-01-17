@@ -36,6 +36,7 @@ public class Character {
     }
 
     public void gainXP(int xp){
+        // Ce decider sur l'xp
         c_experience += xp;
         if(c_experience >= 5){
             c_level+=1;
@@ -58,7 +59,7 @@ public class Character {
              c_character_questFinish.add(quest);
          }
          else{
-             System.err.println("Attentino la quete n'est pas en cours, elle ne peut etre validée");
+             System.err.println("Attention la quete n'est pas en cours, elle ne peut etre validée");
         }
      }
     public void setId(int id){
