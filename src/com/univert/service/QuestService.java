@@ -13,6 +13,10 @@ import com.univert.model.quest.Quest;
 public class QuestService {
 	static int idBadge = 2;
 	
+	public static boolean resetQuests() throws SQLException {
+		return QuestDao.getInstance().getDelegate().resetQuests();
+	}
+	
 	public static int getNumQuestFinish() throws SQLException {
 		return QuestDao.getInstance().getDelegate().getNumQuestFinish();
 	}

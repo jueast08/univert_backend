@@ -135,4 +135,16 @@ public class QuestControler {
 				.header("Access-Control-Max-Age", "1209600").build();
 	}
 	
+	@GET
+	@Path("/quests/reset")
+    @Produces({MediaType.APPLICATION_JSON})
+	public Response resetQuest() throws JSONException, SQLException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("reset", QuestService.resetQuests());
+		return Response.status(200).entity(jsonObject.toString()).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
+	}
 }

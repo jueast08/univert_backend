@@ -16,7 +16,9 @@ public class DbQuestDao {
     private static final String NumberQuestQuery = "select count(*) from u_quest";
     
     private static final String AllQuestFilteredQuery = "select * from u_quest INNER JOIN u_status ON u_status.s_id = q_fk_status WHERE u_status =" + StatusService.getOnGoingStatus();
-	
+
+    private static final String ResetQuestsQuery = "UPDATE `u_quest` SET `q_fk_status`= 4";
+    
     private static final String setStatusQuestQuery(int idQuest, int idStatus) {
     	return "UPDATE `u_quest` SET `q_fk_status`= " + idStatus + " WHERE q_id =" + idQuest;
     }
@@ -51,6 +53,12 @@ public class DbQuestDao {
     
     private static final String getCharacterIdByQuestQuery(int idQuest) {
     	return "select cq_fk_character FROM u_character_quest WHERE cq_fk_quest =" + idQuest;
+    }
+    
+    
+	
+    public boolean resetQuests() throws SQLException {
+		return DbManagement.getInstance().insert(ResetQuestsQuery) >= 1;	
     }
     
 	public Integer getNumQuestFinish() throws SQLException {
