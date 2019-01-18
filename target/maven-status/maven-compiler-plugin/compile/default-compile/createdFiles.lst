@@ -28,9 +28,12 @@ com\univert\model\character\CharacterXp.class
 com\univert\dao\DbUserDao.class
 com\univert\model\character\Character.class
 com\univert\dao\DbQuestDao.class
+com\univert\db\Database.class
+com\univert\db\ResetBdd.class
 com\univert\dao\CharacterDao.class
 com\univert\restjersey\UserControler.class
 com\univert\dao\StatusDao.class
+com\univert\restjersey\DBResetControler.class
 com\univert\db\DbManagement.class
 com\univert\db\MySQLManagement.class
 com\univert\service\CharacterService.class

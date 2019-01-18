@@ -7,7 +7,7 @@ import com.univert.db.MySQLManagement;
 
 public class TestDB {
 
-    final static String NomBase = "jdbc:mariadb://localhost/univert";
+    final static String NomBase = "jdbc:mariadb://localhost/univert2";
 
 	public static void initDB() {
 		try {

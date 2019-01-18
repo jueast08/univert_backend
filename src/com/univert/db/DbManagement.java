@@ -2,6 +2,7 @@ package com.univert.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DbManagement implements IDbManagement {
 
@@ -52,5 +53,10 @@ public class DbManagement implements IDbManagement {
 	@Override
 	public int insert(String insert_string) throws SQLException {
 		return delegate.insert(insert_string);
+	}
+
+	@Override
+	public Statement getStatement() throws SQLException {
+		return delegate.getStatement();
 	}
 }
