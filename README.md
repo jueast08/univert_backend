@@ -8,8 +8,8 @@
 ## Recovering the proper files
 In order to properly install the application, you must recover the following git repositories
 
- 1. https://github.com/jueast08/univert_backend (Backend - recover Master branch)
- 2. https://github.com/jueast08/univert_frontend (Frontend - recover Develop branch)
+ 1. https://github.com/jueast08/univert_backend (Backend - recover **lastest** branch)
+ 2. https://github.com/jueast08/univert_frontend (Frontend - recover **lastest** branch)
 
 
 ## Creating the proper production files
