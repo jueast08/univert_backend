@@ -46,4 +46,8 @@ public class MySQLManagement extends ADbManagement {
     public int insert(String insert_string)throws SQLException{
     	return statement.executeUpdate(insert_string);
     }
+    
+    public Statement getStatement() throws SQLException{
+    	return statement;
+    }
 }
